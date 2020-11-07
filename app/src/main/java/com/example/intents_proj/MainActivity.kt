@@ -2,15 +2,32 @@ package com.example.intents_proj
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import android.view.View
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var et_username = findViewById(R.id.et_username) as EditText
+        var et_password = findViewById(R.id.et_password) as EditText
+        var btn_submit = findViewById(R.id.btn_submit) as Button
 
+        btn_submit.setOnClickListener {
+            val username = et_username;
+            val password = et_password;
+            Toast.makeText(this@MainActivity, username, Toast.LENGTH_LONG).show()
 
-
-
+           if (username.text.isNullOrEmpty() || password.text.isNullOrEmpty()) {
+               Toast.makeText(this, "Username or Password is empty",Toast.LENGTH_LONG).show()
+           } else if (username.text.toString().trim().equals("admin") || password.text.toString().trim().equals("admin")) {
+               val intent = Intent(this, HomeActivity::class.java)
+               startActivity(intent)
+           }
+        }
     }
 }
