@@ -1,5 +1,6 @@
 package com.example.intents_proj
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,14 +21,18 @@ class MainActivity : AppCompatActivity() {
         btn_submit.setOnClickListener {
             val username = et_username;
             val password = et_password;
-            Toast.makeText(this@MainActivity, username, Toast.LENGTH_LONG).show()
 
+            // checking of credentials
            if (username.text.isNullOrEmpty() || password.text.isNullOrEmpty()) {
-               Toast.makeText(this, "Username or Password is empty",Toast.LENGTH_LONG).show()
-           } else if (username.text.toString().trim().equals("admin") || password.text.toString().trim().equals("admin")) {
+               Toast.makeText(this, "Username or Password is empty, please try again",Toast.LENGTH_LONG).show()
+           } else if (username.text.toString().trim().equals("admin") && password.text.toString().trim().equals("admin")) {
+               Toast.makeText(this, "Login successful!",Toast.LENGTH_LONG).show()
                val intent = Intent(this, HomeActivity::class.java)
                startActivity(intent)
+           } else {
+               Toast.makeText(this, "Wrong Credentials, please try again",Toast.LENGTH_LONG).show()
            }
         }
     }
+
 }
