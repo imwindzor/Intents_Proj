@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                Toast.makeText(this, "Username or Password is empty, please try again",Toast.LENGTH_LONG).show()
            } else if (username.text.toString().trim().equals("admin") && password.text.toString().trim().equals("admin")) {
                Toast.makeText(this, "Login successful!",Toast.LENGTH_LONG).show()
-               val intent = Intent(this, HomeActivity::class.java)
+               val intent = Intent(this, HomeButtons::class.java)
                startActivity(intent)
            } else {
                Toast.makeText(this, "Wrong Credentials, please try again",Toast.LENGTH_LONG).show()
